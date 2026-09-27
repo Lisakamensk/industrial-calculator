@@ -1,0 +1,839 @@
+@font-face {
+    font-family: GothamPro;
+    src: url("../fonts/GothamPro.ttf");
+}
+
+.parameters-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 1005.3px;
+    margin: 0 auto;
+    font-family: 'GothamPro', sans-serif;
+}
+
+.parameters-title {
+    margin: 0;
+    margin-left: 12px;
+    margin-bottom: 47px;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 30.62px;
+    color: #0097C7;
+}
+
+.parameters-input-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-right: 12px;
+    margin-left: 12px;
+    margin-bottom: 20px;
+}
+
+.parameters-group-parent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 173px;
+    width: 470px;
+    margin-bottom: 20px;
+}
+
+.parameters-group-title {
+    color: #333333;
+    font-size: 20px;
+    line-height: 19.14px;
+    margin-bottom: 14px;
+}
+
+.parameters-group {
+    box-shadow: 0px 2px 10px 0px rgba(0, 151, 199, 0.2);
+    border-radius: 10px;
+    padding: 30px 33px 30px 33px;
+    margin-top: auto;
+    margin-bottom: auto;
+    transition: box-shadow 0.3s ease;
+}
+
+.active-shadow {
+    box-shadow: 0px 2px 10px 0px rgba(70, 213, 250, 0.4);
+}
+
+/* Стилизация кнопки с выпадающим списком. Начало */
+.parameters-dropdown {
+    position: relative;
+}
+
+.parameters-dropdown-button {
+    position: relative;
+    display: block;
+    width: 100%;
+    text-align: left;
+    color: #333333;
+    background: #FFFFFF;
+    border: 2px solid #0097C7;
+    border-radius: 12px;
+    height: 60px;
+    padding: 22.5px 20px;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 15.31px;
+    cursor: pointer;
+}
+
+.parameters-dropdown-button:focus,
+.parameters-dropdown-button--active {
+    outline: none;
+    border: 2px solid #46D5FA;
+    color: #46D5FA;
+}
+
+.parameters-dropdown-button::after {
+    content: url('../img/ep-arrow-down.svg');
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-40%);
+    pointer-events: none;
+}
+
+.parameters-dropdown-button--active::after {
+    content: url('../img/ep_arrow-down-activ.svg');
+}
+
+.parameters-dropdown-list {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 70px;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 5px 0px rgba(70, 213, 250, 0.4);
+    overflow: hidden;
+    border-radius: 10px;
+    width: 100%;
+    z-index: 1;
+}
+
+.parameters-dropdown-list--visible {
+    display: block;
+}
+
+.parameters-dropdown-list-item {
+    position: relative;
+    padding: 30px 0 32px 30px;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 15.31px;
+    cursor: pointer;
+}
+
+.parameters-group-table .parameters-dropdown-button span,
+.parameters-group-table .parameters-dropdown-list-item span {
+    font-size: 14px;
+}
+
+.parameters-dropdown-list-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: calc(100% - 45px);
+    height: 1px;
+    background-color: #46D5FA;
+    transform: translateX(-50%);
+}
+
+.parameters-dropdown-list-item:last-child::after {
+    content: none;
+}
+
+.parameters-dropdown-button--item-selected::after {
+    content: url('../img/ep_arrow-down-activ.svg');
+}
+
+.parameters-dropdown-input-hidden {
+    display: none;
+}
+
+/* Стилизация кнопок Переключатели. Начало*/
+.parameter-checkbox-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.parameter-label {
+    display: block;
+    position: relative;
+    padding-left: 65px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.parameter-label:last-child {
+    margin-bottom: 0;
+}
+
+.parameter-checkbox {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+}
+
+.parameter-inner {
+    display: block;
+    line-height: 26px;
+}
+
+.parameter-inner:before,
+.parameter-inner:after {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.parameter-inner:before {
+    display: block;
+    content: "";
+    left: 0;
+    width: 46px;
+    height: 26px;
+    border-radius: 20px;
+    background-color: #fff;
+    transition: background-color .3s;
+}
+
+.parameter-inner:after {
+    display: block;
+    content: "";
+    left: 5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 100px;
+    background-color: #B0B0BF;
+    transition: background-color .3s, left .3s;
+}
+
+.parameter-checkbox+.parameter-inner:before {
+    border: 2px solid #B0B0BF;
+}
+
+.parameter-checkbox:checked+.parameter-inner:before {
+    background-color: #fff;
+    border: 2px solid #0097C7;
+}
+
+.parameter-checkbox:checked+.parameter-inner:after {
+    background-color: #0097C7;
+    left: 25px;
+}
+
+.filters-valve {
+    display: flex;
+    gap: 20px;
+    min-width: 1021px;
+    margin-bottom: 45px;
+}
+
+.filters-valve-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(304px, 1fr));
+    gap: 20px;
+    align-items: start;
+    height: 480px;
+}
+
+.pn-group {
+    width: 100px;
+}
+
+.parameter-filters-valve {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0 39px;
+}
+
+.parameter-text {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+
+/* Стилизация кнопок Переключатели. Конец */
+
+.parameters-environment {
+    margin-bottom: 40px;
+}
+
+.parameters-group-radio .parameter-label {
+    padding: 0;
+}
+
+.parameters-group-radio+.parameters-group-radio {
+    margin-top: 9px;
+}
+
+.parameter-real-radio {
+    width: 0;
+    height: 0;
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+}
+
+.parameter-custom-radio {
+    position: relative;
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    background: #fff;
+    border: 2px solid #B0B0BF;
+    border-radius: 100px;
+    vertical-align: middle;
+    margin-right: 20px;
+}
+
+.parameter-custom-radio::before {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: #0097C7;
+    border-radius: 100px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 0.2s ease-in;
+}
+
+.parameter-real-radio:checked+.parameter-custom-radio::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+
+.instruction-area {
+    margin-bottom: 20px;
+}
+
+.parameters-group-textarea {
+    border: 2px solid transparent;
+    width: 930px;
+    height: 215px;
+    resize: none;
+    outline: none;
+    font-family: 'GothamPro', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 28.8px;
+}
+
+.parameters-group-main-window {
+    margin-bottom: 48px;
+}
+
+/* Таблица */
+.parameters-group-table {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px 0;
+    margin-bottom: 44px;
+}
+
+.parameters-group-table>div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 200px;
+    height: 40px;
+}
+
+.parameters-group-table div {
+    text-align: center;
+    width: 200px;
+    height: 40px;
+}
+
+.parameters-group-table span {
+    font-size: 14px;
+    line-height: 13.4px;
+}
+
+.parameters-group-table .header {
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 17.07px;
+    color: #333333;
+}
+
+.parameters-group-table .header-column {
+    color: #333333;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 15.31px;
+    text-align: left;
+    justify-content: flex-start;
+    width: 300px;
+}
+
+.parameters-group-table .row-span {
+    grid-column: 2 / span 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 420px;
+}
+
+/* Стили для выпадающих плашек в таблице. Начало */
+.parameters-group-table .parameters-dropdown-button {
+    font-size: 16px;
+    height: 41px;
+    padding: 10px 20px;
+    line-height: 15.31px;
+    font-family: 'GothamPro', sans-serif;
+    border-radius: 12px;
+}
+
+.parameters-group-table .parameters-dropdown-button:focus {
+    color: #46D5FA;
+}
+
+.parameters-group-table .parameters-dropdown-button:focus span {
+    font-size: 14px;
+}
+
+.parameters-group-table .parameters-dropdown-list {
+    width: 100%;
+}
+
+.parameters-group-table .parameters-dropdown-list-item {
+    padding: 20px 25px;
+    font-size: 14px;
+    text-align: left;
+}
+
+.parameters-dropdown-list-small-spacing {
+    top: 50px;
+}
+
+/* Стили для выпадающих плашек в таблице. Конец */
+
+.enter-data,
+.disabled-enter-data,
+.select-data-parametr {
+    width: calc(100% - 20px);
+    height: 34px;
+    margin: 0;
+}
+
+.enter-data {
+    width: 100%;
+    border: 2px solid #0097C7;
+    border-radius: 12px;
+    outline: none;
+    text-align: center;
+}
+
+.enter-data::placeholder {
+    color: #0097C7;
+    font-family: 'GothamPro', sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 13.4px;
+}
+
+.enter-data:focus {
+    border-color: #46D5FA;
+    font-size: 16px;
+    line-height: 15.31px;
+    color: #333333;
+}
+
+.enter-data:focus::placeholder {
+    color: #46D5FA;
+}
+
+.enter-data:not(:focus) {
+    font-size: 16px;
+}
+
+.enter-data.error {
+    border: 2px solid #FF0000;
+    color: #FF0000;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'GothamPro', sans-serif;
+}
+
+.enter-data.error::placeholder {
+    color: #FF0000;
+}
+
+.disabled-enter-data {
+    width: 100%;
+    height: 38px;
+    background-color: #ffffff;
+    border: 2px solid #B0B0BF;
+    border-radius: 12px;
+    margin: 0;
+    padding: 0 20px;
+    font-family: 'GothamPro', sans-serif;
+    font-size: 16px;
+    line-height: 15.31px;
+    color: #B0B0BF;
+    box-sizing: border-box;
+    cursor: not-allowed;
+}
+
+.disabled-enter-data::placeholder {
+    color: #B0B0BF;
+    font-family: 'GothamPro', sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 13.4px;
+}
+
+.row-span .select-data-parametr,
+.row-span .parameters-dropdown {
+    width: 420px;
+    margin-right: 7px;
+}
+
+.row-span .disabled-enter-data {
+    width: 420px;
+    margin-right: 7px;
+}
+
+.select-data-parametr {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+    background: url("../img/ep-arrow-down.svg") no-repeat calc(100% - 8px);
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #0097C7;
+    border-radius: 12px;
+    background-color: #FFFFFF;
+    margin: 0;
+    padding: 0;
+    padding-left: 20px;
+    font-family: 'GothamPro', sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 13.4px;
+    color: #333333;
+    box-sizing: border-box;
+}
+
+.disabled-data-parametr {
+    width: 100%;
+    height: 100%;
+    border: 2px solid #0097C7;
+    border-radius: 12px;
+    background-color: #FFFFFF;
+    padding: 0;
+    padding-left: 20px;
+    font-family: 'GothamPro', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 13.4px;
+    color: #333333;
+    box-sizing: border-box;
+}
+
+.disabled-data-parametr::placeholder {
+    color: #333333;
+}
+
+.select-data-parametr:disabled {
+    width: 100%;
+    height: 100%;
+    background: url("../img/ep_arrow-down-non-activ.svg") no-repeat calc(100% - 8px);
+    border: 2px solid #B0B0BF;
+    border-radius: 12px;
+    background-color: #FFFFFF;
+    margin: 0;
+    padding: 0;
+    padding-left: 20px;
+    font-family: 'GothamPro', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 15.31px;
+    color: #B0B0BF;
+    box-sizing: border-box;
+    cursor: auto;
+}
+
+.calculation-result {
+    margin-bottom: 39px;
+}
+
+.calculation-result .parameters-group-title {
+    margin-bottom: 20px;
+}
+
+/* Таблица Результат расчета. Начало */
+
+.calculation-result-table {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-auto-rows: minmax(50px, auto);
+    padding: 1px;
+    margin-bottom: 20px;
+    border-top: 1px solid #B0B0BF;
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px 0px rgba(0, 151, 199, 0.2);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.calculation-result-table:hover {
+    box-shadow: 0px 2px 10px 0px rgba(70, 213, 250, 0.4);
+}
+
+.calculation-result-table div {
+    background-color: #F9F9FC;
+    border-bottom: 1px solid #B0B0BF;
+    padding: 16px;
+}
+
+.calculation-result-table span {
+    font-size: 14px;
+    line-height: 16.1px;
+}
+
+.calculation-result-table div:nth-child(8n+5),
+.calculation-result-table div:nth-child(8n+6),
+.calculation-result-table div:nth-child(8n+7),
+.calculation-result-table div:nth-child(8n+8) {
+    background-color: #FFFFFF;
+}
+
+.cell-blue {
+    background-color: #2FA3F6 !important;
+}
+
+.cell-green {
+    background-color: #34F130 !important;
+}
+
+.cell-red {
+    background-color: #E53B3B !important;
+}
+
+.calculation-result-table div.header,
+.calculation-result-table div.cell {
+    text-align: center;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 18.4px;
+    letter-spacing: 1%;
+}
+
+.calculation-result-table div.left-header {
+    text-align: left;
+    font-size: 16px;
+    line-height: 18.4px;
+    letter-spacing: 1%;
+    font-weight: 600;
+}
+
+/* Таблица Результат расчета. Конец */
+
+/* Скролбар */
+.scrollbar-wrapper {
+    margin-top: 10px;
+    width: 1025px;
+    height: 508px;
+    overflow: auto;
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px 0px rgba(0, 151, 199, 0.2);
+    margin-bottom: 30px;
+}
+
+.scrollbar-wrapper::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.scrollbar-wrapper::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 10px;
+}
+
+.scrollbar-wrapper::-webkit-scrollbar-thumb {
+    background: #B0B0BF;
+    border-radius: 10px;
+}
+
+
+/* Таблица Подбор клапана. Начало */
+
+.valve-selection-result-table {
+    display: grid;
+    grid-template-columns: 300px 30px repeat(13, minmax(163px, auto));
+    grid-auto-rows: minmax(50px, auto);
+    padding: 1px;
+    margin-bottom: 20px;
+    gap: 0 5px;
+}
+
+.valve-selection-result-table div.gap-cell {
+    background-color: transparent;
+    /* или любой другой цвет фона, который соответствует вашему дизайну */
+    border-bottom: none;
+    /* убираем нижнюю границу, если она не нужна */
+}
+
+.valve-selection-result-table div {
+    border-bottom: 1px solid #B0B0BF;
+    padding: 16px;
+    font-weight: bold;
+}
+
+.valve-selection-result-table div.header {
+    text-align: center;
+    font-size: 16px;
+    line-height: 18.4px;
+    letter-spacing: 1%;
+    border-top: 1px solid #B0B0BF;
+}
+
+.valve-selection-result-table div.cell {
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.valve-selection-result-table div.change-color {
+    background-color: #F9F9FC;
+}
+
+.valve-selection-result-table div.center {
+    text-align: center;
+}
+
+/* Графики */
+.parameters-graphics {
+    display: flex;
+    margin-bottom: 56px;
+}
+
+.parameters-images-column {
+    margin-right: 15px;
+}
+
+.parameters-graphics .parameters-group-textarea {
+    width: 524px;
+    height: 450px;
+}
+
+.instruction-area .parameters-group {
+    padding: 30px 56px 33px 30px;
+}
+
+/* Стили для модального окна */
+.parameters-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.parameters-modal-content {
+    background-color: #fefefe;
+    margin: 1% auto;
+    padding: 40px;
+    box-shadow: 0px 2px 10px 0px rgba(0, 151, 199, 0.2);
+    border-radius: 10px;
+    width: 60%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.valves-images-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 85vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+.parameters-modal-content img {
+    max-width: 100%;
+    max-height: 85vh;
+    display: block;
+}
+
+.valve-modal-close {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.valve-modal-close:hover,
+.valve-modal-close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.valve-modal-navigation span {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    color: #aaa;
+    font-weight: bold;
+}
+
+.prev {
+    left: 20px;
+}
+
+.next {
+    right: 20px;
+}
+
+/* Стили для заглушек кнопок */
+.parametrs-button-area {
+    text-align: end;
+}
+
+.parametrs-button-area img {
+    margin-right: 20px;
+}
+
+.parametrs-button-area img:last-child {
+    margin-right: 10px;
+}
+
+.pick-valve-button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.button-area-result {
+    display: flex;
+    gap: 30px;
+}
