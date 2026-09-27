@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <link href="css/calculator-style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <title>Калькулятор подбора регуляторов давления</title>
+</head>
+
+<body>
+
+    <form class="parameters-form">
+        <section class="parameter-input">
+            <h2 class="parameters-title">Ввод параметров</h2>
+            <div class="parameters-input-items">
+                <div class="parameters-group-parent">
+                    <div class="parameters-group-title">
+                        Вид регулятора
+                    </div>
+                    <div class="parameters-group">
+                        <div class="parameters-form-group">
+                            <div class="parameters-dropdown">
+                                <button class="parameters-dropdown-button">Редукционный клапан давления</button>
+                                <ul class="parameters-dropdown-list">
+                                    <li class="parameters-dropdown-list-item" data-value="bypass-valve">Перепускной
+                                        клапан</li>
+                                    <li class="parameters-dropdown-list-item" data-value="pressure-drop">Регулятор
+                                        перепада давления</li>
+                                    <li class="parameters-dropdown-list-item" data-value="simple-valve">Простой клапан
+                                    </li>
+                                </ul>
+                                <input type="text" name="select-category" value=""
+                                    class="parameters-dropdown-input-hidden">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="parameters-group-parent">
+                    <div class="parameters-group-title">
+                        Тип регулятора
+                    </div>
+                    <div class="parameters-group">
+                        <div class="parameter-checkbox-group">
+                            <label class="parameter-label" for="himself">
+                                <input class="parameter-checkbox" type="checkbox" id="himself" checked>
+                                <span class="parameter-inner">До себя</span>
+                            </label>
+                            <label class="parameter-label" for="after-myself">
+                                <input class="parameter-checkbox" type="checkbox" id="after-myself" checked>
+                                <span class="parameter-inner">После себя</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="parameters-group-parent">
+                    <div class="parameters-group-title">
+                        Рабочая среда
+                    </div>
+                    <div class="parameters-group">
+                        <div class="parameters-environment">
+                            <div class="parameters-dropdown">
+                                <button class="parameters-dropdown-button">Масло И-40А</button>
+                                <ul class="parameters-dropdown-list">
+                                    <li class="parameters-dropdown-list-item" data-value="test-recording-1">Тестовая
+                                        запись 1</li>
+                                    <li class="parameters-dropdown-list-item" data-value="test-recording-2">Тестовая
+                                        запись 2</li>
+                                    <li class="parameters-dropdown-list-item" data-value="test-recording-3">Тестовая
+                                        запись 3
+                                    </li>
+                                </ul>
+                                <input type="text" name="select-category" value=""
+                                    class="parameters-dropdown-input-hidden">
+                            </div>
+                        </div>
+                        <div class="parameters-group-radio">
+                            <label class="parameter-label">
+                                <input type="radio" name="molecules" value="gas-molecule" class="parameter-real-radio">
+                                <span class="parameter-custom-radio"></span>
+                                Газ
+                            </label>
+                        </div>
+                        <div class="parameters-group-radio">
+                            <label class="parameter-label">
+                                <input type="radio" name="molecules" value="liquid-molecule"
+                                    class="parameter-real-radio">
+                                <span class="parameter-custom-radio"></span>
+                                Жидкость
+                            </label>
+                        </div>
+                        <div class="parameters-group-radio">
+                            <label class="parameter-label">
+                                <input type="radio" name="molecules" value="steam-molecule"
+                                    class="parameter-real-radio">
+                                <span class="parameter-custom-radio"></span>
+                                Пар
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="parameters-group-parent">
+                    <div class="parameters-group-title">
+                        Выбор материала
+                    </div>
+                    <div class="parameters-group">
+                        <div class="parameter-checkbox-group">
+                            <label class="parameter-label" for="09g2s-20gl">
+                                <input class="parameter-checkbox" type="checkbox" id="09g2s-20gl" checked>
+                                <span class="parameter-inner">09Г2С (20ГЛ)</span>
+                            </label>
+                            <label class="parameter-label" for="12x18h10tl-12h18n9tl">
+                                <input class="parameter-checkbox" type="checkbox" id="12x18h10tl-12h18n9tl">
+                                <span class="parameter-inner">12X18H10TЛ (12Х18Н9ТЛ)</span>
+                            </label>
+                            <label class="parameter-label" for="st-20-st-20l">
+                                <input class="parameter-checkbox" type="checkbox" id="st-20-st-20l" checked>
+                                <span class="parameter-inner">Ст.20 (Ст.20Л)</span>
+                            </label>
+                            <label class="parameter-label" for="vch40">
+                                <input class="parameter-checkbox" type="checkbox" id="vch40">
+                                <span class="parameter-inner">ВЧ40</span>
+                            </label>
+                            <label class="parameter-label" for="tin-leadless-bronze">
+                                <input class="parameter-checkbox" type="checkbox" id="tin-leadless-bronze">
+                                <span class="parameter-inner">Бронза оловянная / безоловянная</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="instruction-area">
+                <div class="parameters-group-title">
+                    Инструкции
+                </div>
+                <div class="parameters-group">
+                    <textarea class="parameters-group-textarea"></textarea>
+                </div>
+            </div>
+            <div class="parameters-group-main-window">
+                <div class="parameters-group">
+                    <div class="parameters-group-table">
+                        <!-- Header Row -->
+                        <div class="header"></div>
+                        <div class="header">Min</div>
+                        <div class="header">Max</div>
+                        <div class="header"></div>
+                        <!-- Row 2 -->
+                        <div class="header-column">Входное давление, P1</div>
+                        <div>
+                            <input class="enter-data" type="text" placeholder="введите данные"
+                                oninput="validateInput(this)">
+                        </div>
+                        <div><input class="enter-data" type="text" placeholder="введите данные"
+                                oninput="validateInput(this)"></div>
+                        <div>
+                            <div class="parameters-dropdown">
+                                <button class="parameters-dropdown-button">кгс/см<span>2</span> (изб)</button>
+                                <ul class="parameters-dropdown-list parameters-dropdown-list-small-spacing">
+                                    <li class="parameters-dropdown-list-item" data-value="mpa">МПа</li>
+                                    <li class="parameters-dropdown-list-item" data-value="bar">бар</li>
+                                    <li class="parameters-dropdown-list-item" data-value="pa">Па</li>
+                                    <li class="parameters-dropdown-list-item" data-value="atm">атм</li>
+                                </ul>
+                                <input type="hidden" name="kgf-cm2" value="" class="parameters-dropdown-input-hidden">
+                            </div>
+                        </div>
+                        <!-- Row 2 -->
+                        <div class="header-column">Выходное давление, P2</div>
+                        <div><input class="enter-data" type="text" placeholder="введите данные"
+                                oninput="validateInput(this)"></div>
+                        <div><input class="enter-data" type="text" placeholder="введите данные"
+                                oninput="validateInput(this)"></div>
+                        <div><input class="disabled-data-parametr" type="text" placeholder="кгс/см2 (изб)" disabled>
+                        </div>
+                        <!-- Row 3 -->
+                        <div class="header-column">Температура, T1</div>
+                        <div><input class="enter-data" type="text" placeholder="введите данные"
+                                oninput="validateInput(this)"></div>
+                        <div><input class="enter-data" type="text" placeholder="введите данные"
+                                oninput="validateInput(this)"></div>
+                        <div>
+                            <select name="select-data-no" class="select-data-parametr" disabled>
+                                <option value="c">C</option>
+                                <option value="test-recording-c-1">Тестовая запись 1</option>
+                                <option value="test-recording-c-2">Тестовая запись 2</option>
+                                <option value="test-recording-c-3">Тестовая запись 3</option>
+                                <option value="test-recording-c-4">Тестовая запись 4</option>
+                            </select>
+                        </div>
+                        <!-- Row 4 -->
+                        <div class="header-column">Максимальный расход, Q</div>
+                        <div><input class="enter-data" type="text" placeholder="введите данные"
+                                oninput="validateInput(this)"></div>
+                        <div><input class="enter-data" type="text" placeholder="введите данные"
+                                oninput="validateInput(this)"></div>
+                        <div>
+                            <div class="parameters-dropdown">
+                                <button class="parameters-dropdown-button">м<span>3</span>/ч</button>
+                                <ul class="parameters-dropdown-list parameters-dropdown-list-small-spacing">
+                                    <li class="parameters-dropdown-list-item" data-value="m3-min">м<span>3</span>/мин
+                                    </li>
+                                    <li class="parameters-dropdown-list-item" data-value="m3-day">м<span>3</span>/сут
+                                    </li>
+                                </ul>
+                                <input type="hidden" name="kgf-cm2" value="" class="parameters-dropdown-input-hidden">
+                            </div>
+                        </div>
+                        <!-- Row 5 -->
+                        <div class="header-column">Диаметр фланцев</div>
+                        <div class="row-span">
+                            <div class="parameters-dropdown">
+                                <button class="parameters-dropdown-button">15 (1/2”)</button>
+                                <ul class="parameters-dropdown-list">
+                                    <li class="parameters-dropdown-list-item" data-value="option-1">Опция 1
+                                    </li>
+                                    <li class="parameters-dropdown-list-item" data-value="option-2">Опция 2
+                                    </li>
+                                </ul>
+                                <input type="hidden" name="kgf-cm2" value="" class="parameters-dropdown-input-hidden">
+                            </div>
+                        </div>
+                        <div><input class="disabled-data-parametr" type="text" placeholder="мм (дюйм)" disabled>
+                        </div>
+                        <!-- Row 6 -->
+                        <div class="header-column">Температура кипения, Ts</div>
+                        <div><input class="disabled-enter-data" type="text" placeholder="369,42" disabled></div>
+                        <div><input class="disabled-enter-data" type="text" placeholder="390,65" disabled></div>
+                        <div><input class="disabled-enter-data" type="text" placeholder="C" disabled></div>
+                        <!-- Row 7 -->
+                        <div class="header-column">Давление насыщенного пара, Pv</div>
+                        <div><input class="disabled-enter-data" type="text" placeholder="369,42" disabled></div>
+                        <div><input class="disabled-enter-data" type="text" placeholder="390,65" disabled></div>
+                        <div><input class="disabled-enter-data" type="text" placeholder="кгс/см2 (изб)" disabled></div>
+                        <!-- Row 8 -->
+                        <div class="header-column">Плотность</div>
+                        <div><input class="disabled-enter-data" type="text" placeholder="369,42" disabled></div>
+                        <div><input class="disabled-enter-data" type="text" placeholder="390,65" disabled></div>
+                        <div><input class="disabled-enter-data" type="text" placeholder="кгс/м3" disabled></div>
+                        <!-- Row 9 -->
+                        <div class="header-column">Критическое давление, Pc</div>
+                        <div class="row-span"><input class="disabled-enter-data" type="text" placeholder="44,87"
+                                disabled></div>
+                        <div><input class="disabled-enter-data" type="text" placeholder="кгс/см2 (изб)" disabled></div>
+                    </div>
+                    <div class="parametrs-button-area">
+                        <img src="img/buttom-1.png" alt="Заглушка для кнопки">
+                        <img src="img/buttom-2.png" alt="Заглушка для кнопки">
+                        <img src="img/buttom-3.png" alt="Заглушка для кнопки">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="calculation-result">
+            <h2 class="parameters-title">Результат расчета</h2>
+
+            <div class="calculation-result-table">
+                <div class="header">Параметр</div>
+                <div class="header">Ед. измерения</div>
+                <div class="header">Значение</div>
+                <div class="header">Значение</div>
+
+                <div class="left-header">Скорость течения во входящем</div>
+                <div class="cell cell-blue">м/с</div>
+                <div class="cell cell-green">0,884</div>
+                <div class="cell cell-red">13,263</div>
+
+                <div class="left-header">Kv</div>
+                <div class="cell">м<span>3</span>/ч</div>
+                <div class="cell">0,3367</div>
+                <div class="cell">2,0974</div>
+
+                <div class="left-header">Kvs (необходимое)</div>
+                <div class="cell">м<span>3</span>/ч</div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+
+                <div class="left-header">Cvs (необходимое)</div>
+                <div class="cell">галл/м</div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+
+                <div class="left-header">Уровень звукового давления</div>
+                <div class="cell">дБА</div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+
+                <div class="left-header">Рекомендуемый диаметр</div>
+                <div class="cell">мм</div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+
+                <div class="left-header">Фазовый переход среды</div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+
+                <div class="left-header">Индекс кавитации</div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+
+                <div class="left-header">Степень редуцирования</div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+            </div>
+            <div class="instruction-area">
+                <div class="parameters-group-title">
+                    Рекомендации
+                </div>
+                <div class="parameters-group">
+                    <textarea class="parameters-group-textarea"></textarea>
+                </div>
+            </div>
+        </section>
+        <div class="pick-valve-button">
+            <img src="img/buttom-4.png" alt="Заглушка общей кнопки">
+        </div>
+    </form>
+    <script src="main.js"></script>
+</body>
+
+</html>
